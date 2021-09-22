@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenplayApp.Web", "ScreenplayApp.Web\ScreenplayApp.Web.csproj", "{1107747B-2678-44DA-9359-E34E1C879142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenplayApp.Web", "ScreenplayApp.Web\ScreenplayApp.Web.csproj", "{1107747B-2678-44DA-9359-E34E1C879142}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A61127E8-B6C9-412F-A1A1-5B7435412F43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FDF28312-9FCF-4E3C-8A44-AFC8D7DD3D51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenplayApp.Core", "ScreenplayApp.Core\ScreenplayApp.Core.csproj", "{4A8B608F-94E6-493C-AFF8-8B19A1057256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenplayApp.Core", "ScreenplayApp.Core\ScreenplayApp.Core.csproj", "{4A8B608F-94E6-493C-AFF8-8B19A1057256}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenplayApp.Infrastructure", "ScreenplayApp.Infrastructure\ScreenplayApp.Infrastructure.csproj", "{B57677FD-F05E-4084-96EB-12B6A24CFEEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenplayApp.Infrastructure", "ScreenplayApp.Infrastructure\ScreenplayApp.Infrastructure.csproj", "{B57677FD-F05E-4084-96EB-12B6A24CFEEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ScreenplayApp.Core.Mapper;
+using ScreenplayApp.Core.Models.Requests;
 using ScreenplayApp.Core.Repositories;
 using ScreenplayApp.Core.Services;
+using ScreenplayApp.Core.Validators;
 using ScreenplayApp.Infrastructure.Data;
 using ScreenplayApp.Infrastructure.Repositories;
 using ScreenplayApp.Infrastructure.Services;
@@ -42,6 +46,16 @@ namespace ScreenplayApp.Web.Extensions
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+
+            // Fluent Validation
+            services.AddMvc().AddFluentValidation();
+            services.AddTransient<IValidator<RegisterAccountRequest>, RegisterAccountRequestValidator>();
+            services.AddTransient<IValidator<LoginAccountRequest>, LoginAccountRequestValidator>();
+            services.AddTransient<IValidator<BookingInsertRequest>, BookingInsertRequestValidator>();
+            services.AddTransient<IValidator<RatingInsertRequest>, RatingInsertRequestValidator>();
+
+            services.AddTransient<IValidator<MostViewedMoviesGetRequest>, MostViewedMoviesGetRequestValidator>();
+
 
             return services;
         }
