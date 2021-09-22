@@ -10,8 +10,8 @@ using ScreenplayApp.Infrastructure.Data;
 namespace ScreenplayApp.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210920175212_Initial")]
-    partial class Initial
+    [Migration("20210921163657_add-migation AddedStoredProcedures")]
+    partial class addmigationAddedStoredProcedures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -257,6 +257,23 @@ namespace ScreenplayApp.Infrastructure.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
+            modelBuilder.Entity("ScreenplayApp.Core.Entities.Booking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Bookings");
+                });
+
             modelBuilder.Entity("ScreenplayApp.Core.Entities.Rating", b =>
                 {
                     b.Property<int>("Id")
@@ -304,6 +321,37 @@ namespace ScreenplayApp.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Screenplays");
+                });
+
+            modelBuilder.Entity("ScreenplayApp.Core.Entities.Ticket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("BookingId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScreenplayId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookingId");
+
+                    b.HasIndex("ScreenplayId");
+
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("ActorScreenplay", b =>
@@ -376,6 +424,15 @@ namespace ScreenplayApp.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ScreenplayApp.Core.Entities.Booking", b =>
+                {
+                    b.HasOne("ScreenplayApp.Core.Entities.AppUser", "AppUser")
+                        .WithMany("Bookings")
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("ScreenplayApp.Core.Entities.Rating", b =>
                 {
                     b.HasOne("ScreenplayApp.Core.Entities.Screenplay", "Screenplay")
@@ -387,6 +444,23 @@ namespace ScreenplayApp.Infrastructure.Migrations
                     b.Navigation("Screenplay");
                 });
 
+            modelBuilder.Entity("ScreenplayApp.Core.Entities.Ticket", b =>
+                {
+                    b.HasOne("ScreenplayApp.Core.Entities.Booking", "Booking")
+                        .WithMany("Tickets")
+                        .HasForeignKey("BookingId");
+
+                    b.HasOne("ScreenplayApp.Core.Entities.Screenplay", "Screenplay")
+                        .WithMany("Tickets")
+                        .HasForeignKey("ScreenplayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Booking");
+
+                    b.Navigation("Screenplay");
+                });
+
             modelBuilder.Entity("ScreenplayApp.Core.Entities.AppRole", b =>
                 {
                     b.Navigation("UserRoles");
@@ -394,12 +468,21 @@ namespace ScreenplayApp.Infrastructure.Migrations
 
             modelBuilder.Entity("ScreenplayApp.Core.Entities.AppUser", b =>
                 {
+                    b.Navigation("Bookings");
+
                     b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("ScreenplayApp.Core.Entities.Booking", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("ScreenplayApp.Core.Entities.Screenplay", b =>
                 {
                     b.Navigation("Ratings");
+
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

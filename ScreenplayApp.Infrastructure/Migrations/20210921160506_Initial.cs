@@ -188,6 +188,25 @@ namespace ScreenplayApp.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AppUserId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ActorScreenplay",
                 columns: table => new
                 {
@@ -225,6 +244,35 @@ namespace ScreenplayApp.Infrastructure.Migrations
                     table.PrimaryKey("PK_Ratings", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Ratings_Screenplays_ScreenplayId",
+                        column: x => x.ScreenplayId,
+                        principalTable: "Screenplays",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tickets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ScreenplayId = table.Column<int>(type: "int", nullable: false),
+                    BookingId = table.Column<int>(type: "int", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "bit", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Bookings_BookingId",
+                        column: x => x.BookingId,
+                        principalTable: "Bookings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Screenplays_ScreenplayId",
                         column: x => x.ScreenplayId,
                         principalTable: "Screenplays",
                         principalColumn: "Id",
@@ -276,8 +324,23 @@ namespace ScreenplayApp.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Bookings_AppUserId",
+                table: "Bookings",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ratings_ScreenplayId",
                 table: "Ratings",
+                column: "ScreenplayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_BookingId",
+                table: "Tickets",
+                column: "BookingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_ScreenplayId",
+                table: "Tickets",
                 column: "ScreenplayId");
         }
 
@@ -305,16 +368,22 @@ namespace ScreenplayApp.Infrastructure.Migrations
                 name: "Ratings");
 
             migrationBuilder.DropTable(
+                name: "Tickets");
+
+            migrationBuilder.DropTable(
                 name: "Actors");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "Screenplays");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

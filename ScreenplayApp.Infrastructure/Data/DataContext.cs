@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ScreenplayApp.Core.Entities;
+using ScreenplayApp.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,13 @@ namespace ScreenplayApp.Infrastructure.Data
         public DbSet<Screenplay> Screenplays { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+
+        // Reports
+        public DbSet<MostRatedMoviesReport> MostRatedMoviesReports { get; set; }
+        public DbSet<MostSoldMoviesWithoutRatingReport> MostSoldMoviesWithoutRatingReport { get; set; }
+        public DbSet<MostViewedMoviesForAPeriodReport> MostViewedMoviesForAPeriodReport { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -38,6 +46,10 @@ namespace ScreenplayApp.Infrastructure.Data
                 .WithOne(u => u.Role)
                 .HasForeignKey(ur => ur.RoleId)
                 .IsRequired();
+
+            builder.Entity<MostRatedMoviesReport>().HasNoKey();
+            builder.Entity<MostSoldMoviesWithoutRatingReport>().HasNoKey();
+            builder.Entity<MostViewedMoviesForAPeriodReport>().HasNoKey();
         }
     }
 }

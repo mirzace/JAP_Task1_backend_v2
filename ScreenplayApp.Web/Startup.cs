@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ScreenplayApp.Web.Extensions;
 using ScreenplayApp.Web.Middlewares;
+using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,14 @@ namespace ScreenplayApp.Web
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ScreenplayApp.Web", Version = "v1" });
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Description = "Standard Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
+                    In = ParameterLocation.Header,
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
 
             services.AddApplicationServices(_configuration);
@@ -46,7 +55,9 @@ namespace ScreenplayApp.Web
             {
                 //app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ScreenplayApp.Web v1"));
+                app.UseSwaggerUI(
+                    c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ScreenplayApp.Web v1")
+                    );
             }
 
             loggerFactory.AddLog4Net();
@@ -57,6 +68,7 @@ namespace ScreenplayApp.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

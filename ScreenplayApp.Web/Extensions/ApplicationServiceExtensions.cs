@@ -24,10 +24,16 @@ namespace ScreenplayApp.Web.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IScreenplayService, ScreenplayService>();
             services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IReportService, ReportService>();
 
             // Repositories
             services.AddScoped<IRatingRepository, RatingRepository>();
             services.AddScoped<IScreenplayRepository, ScreenplayRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
 
             // AutoMapper
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);

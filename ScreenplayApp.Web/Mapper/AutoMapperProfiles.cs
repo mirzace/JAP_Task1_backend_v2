@@ -19,9 +19,17 @@ namespace ScreenplayApp.Core.Mapper
             CreateMap<Screenplay, ScreenplayResponse>()
                 .ForMember(dest => dest.AverageRate, opt => opt.MapFrom(src => src.Ratings.Average(r => r.Rate)))
                 .ReverseMap();
+
             CreateMap<Actor, ActorResponse>().ReverseMap();
+
             CreateMap<RatingInsertRequest, Rating>().ReverseMap();
             CreateMap<RatingInsertResponse, Rating>().ReverseMap();
+
+            CreateMap<TicketResponse, Ticket>().ReverseMap();
+            CreateMap<UpdateTicketRequest, Ticket>().ReverseMap();
+
+            CreateMap<BookingInsertRequest, Booking>().ReverseMap();
+            CreateMap<BookingResponse, Booking>().ReverseMap();
         }
     }
 }

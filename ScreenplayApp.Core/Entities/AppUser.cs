@@ -12,5 +12,6 @@ namespace ScreenplayApp.Core.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public ICollection<AppUserRole> UserRoles { get; set; }
+        public ICollection<Booking> Bookings { get; set; } = null;
     }
 }

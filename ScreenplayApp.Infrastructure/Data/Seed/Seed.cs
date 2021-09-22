@@ -61,8 +61,9 @@ namespace ScreenplayApp.Infrastructure.Data.Seed
 
             await context.SaveChangesAsync();
 
-            // Seed Ratings
+            // Seed Ratings and Tickets
 
+            string[] locations = { "Location A", "Location B", "Location C", "Location D", "Location E" };
             Random rand = new Random();
 
             foreach (Screenplay screenplay in screenplays)
@@ -70,6 +71,18 @@ namespace ScreenplayApp.Infrastructure.Data.Seed
                 for (int i = 0; i < 2; i++)
                 {
                     int index = rand.Next(1,5);
+
+                    if (screenplay.Category == "movie")
+                    {
+                        Ticket ticket = new Ticket
+                        {
+                            IsAvailable = true,
+                            Screenplay = screenplay,
+                            Location = locations[index],
+                            Date = new DateTime(2022, 1, 1, 1, 1, 1)
+                    };
+                        context.Tickets.Add(ticket);
+                    }
 
                     // Add rating for earch screenplay
                     Rating rating = new Rating
