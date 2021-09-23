@@ -1,4 +1,5 @@
-﻿using ScreenplayApp.Core.Models.Requests;
+﻿using ScreenplayApp.Core.Exceptions;
+using ScreenplayApp.Core.Models.Requests;
 using ScreenplayApp.Core.Models.Responses;
 using ScreenplayApp.Core.Repositories;
 using ScreenplayApp.Core.Services;
@@ -19,9 +20,13 @@ namespace ScreenplayApp.Infrastructure.Services
         }
         public async Task<RatingInsertResponse> RateScreenplay(RatingInsertRequest request)
         {
-            if (request.Rate < 1 || request.Rate > 5) throw new ApplicationException("Rate must be between 1 and 5");
+            if (request.Rate < 1 || request.Rate > 5) throw new BadRequestException("Rate must be between 1 and 5");
+            if (request.ScreenplayId < 1) throw new BadRequestException("Invalid ScreenplayId");
 
-            return await _ratingRepository.RateScreenplayAsync(request);
+            var response = await _ratingRepository.RateScreenplayAsync(request);
+            if (response is null) throw new NotFoundException("Screenplay not found!");
+
+            return response;
         }
     }
 }
