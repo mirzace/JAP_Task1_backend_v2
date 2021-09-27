@@ -14,6 +14,7 @@ using ScreenplayApp.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ScreenplayApp.Web.Extensions
@@ -48,7 +49,13 @@ namespace ScreenplayApp.Web.Extensions
             });
 
             // Fluent Validation
-            services.AddMvc().AddFluentValidation();
+            services.AddMvc()
+                .AddFluentValidation()
+                .AddJsonOptions(options => 
+                    { 
+                        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); 
+                        options.JsonSerializerOptions.IgnoreNullValues = true; 
+                    }); ;
             services.AddTransient<IValidator<RegisterAccountRequest>, RegisterAccountRequestValidator>();
             services.AddTransient<IValidator<LoginAccountRequest>, LoginAccountRequestValidator>();
             services.AddTransient<IValidator<BookingInsertRequest>, BookingInsertRequestValidator>();

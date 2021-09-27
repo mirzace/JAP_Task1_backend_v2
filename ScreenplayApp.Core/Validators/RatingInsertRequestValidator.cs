@@ -15,7 +15,7 @@ namespace ScreenplayApp.Core.Validators
             RuleFor(x => x.Rate)
                 .NotNull()
                 .GreaterThan(0)
-                .LessThan(5);
+                .LessThan(6);
 
             RuleFor(x => x.ScreenplayId)
                 .NotNull()

@@ -32,7 +32,7 @@ namespace ScreenplayApp.Infrastructure.Repositories
             var booking = new Booking
             {
                 AppUser = await _userManager.Users
-                .SingleOrDefaultAsync(x => x.Id == request.AppUserId),                
+                .SingleOrDefaultAsync(x => x.Id == request.AppUserId),
             };
 
             await _context.Bookings.AddAsync(booking);

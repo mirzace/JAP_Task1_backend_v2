@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using ScreenplayApp.Core.Entities;
+using ScreenplayApp.Core.Exceptions;
 using ScreenplayApp.Core.Models.Requests;
 using ScreenplayApp.Core.Models.Responses;
 using ScreenplayApp.Core.Repositories;

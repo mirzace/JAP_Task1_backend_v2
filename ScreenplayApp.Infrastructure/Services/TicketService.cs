@@ -25,7 +25,7 @@ namespace ScreenplayApp.Infrastructure.Services
             if (request.Date < DateTime.Now) throw new BadRequestException("Invalid date");
 
             var tickets = await _ticketRepository.GetTicketsAsync(request);
-            if (tickets is null) throw new NotFoundException("Tickets are not available");
+            if (tickets.Count() == 0) throw new NotFoundException("Tickets are not available");
 
             return tickets;
         }

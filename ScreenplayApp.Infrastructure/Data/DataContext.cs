@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ScreenplayApp.Core.Entities;
+using ScreenplayApp.Core.Enums;
 using ScreenplayApp.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,6 @@ namespace ScreenplayApp.Infrastructure.Data
         {
 
         }
-
         public DbSet<Screenplay> Screenplays { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Rating> Ratings { get; set; }
@@ -46,6 +46,17 @@ namespace ScreenplayApp.Infrastructure.Data
                 .WithOne(u => u.Role)
                 .HasForeignKey(ur => ur.RoleId)
                 .IsRequired();
+
+            // Screenplays
+
+            builder
+                .Entity<Screenplay>()
+                .Property(e => e.Category)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (Category)Enum.Parse(typeof(Category), v));
+
+
 
             builder.Entity<MostRatedMoviesReport>().HasNoKey();
             builder.Entity<MostSoldMoviesWithoutRatingReport>().HasNoKey();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ScreenplayApp.Core.Entities;
+using ScreenplayApp.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace ScreenplayApp.Infrastructure.Data.Seed
             // Seed Roles
             var roles = new List<AppRole>
             {
-                new AppRole { Name = "Consumer"},
-                new AppRole { Name = "Admin"}
+                new AppRole { Name = AppRolesEnum.Consumer.ToString()},
+                new AppRole { Name = AppRolesEnum.Admin.ToString()}
             };
 
             foreach (var role in roles)
@@ -35,7 +36,7 @@ namespace ScreenplayApp.Infrastructure.Data.Seed
             };
 
             await userManager.CreateAsync(admin, "Test123!");
-            await userManager.AddToRoleAsync(admin, "Admin");
+            await userManager.AddToRoleAsync(admin, AppRolesEnum.Admin.ToString());
 
             // Seed App User
             var user = new AppUser
@@ -44,7 +45,7 @@ namespace ScreenplayApp.Infrastructure.Data.Seed
             };
 
             await userManager.CreateAsync(user, "Test123!");
-            await userManager.AddToRoleAsync(user, "Consumer");
+            await userManager.AddToRoleAsync(user, AppRolesEnum.Consumer.ToString());
         }
 
         public static async Task SeedScreenplays(DataContext context)
@@ -72,7 +73,7 @@ namespace ScreenplayApp.Infrastructure.Data.Seed
                 {
                     int index = rand.Next(1,5);
 
-                    if (screenplay.Category == "movie")
+                    if (screenplay.Category.ToString() == Category.Movie.ToString())
                     {
                         Ticket ticket = new Ticket
                         {

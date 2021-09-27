@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using ScreenplayApp.Core.Entities;
+using ScreenplayApp.Core.Enums;
 using ScreenplayApp.Core.Models;
 using ScreenplayApp.Core.Models.Requests;
 using ScreenplayApp.Core.Models.Responses;

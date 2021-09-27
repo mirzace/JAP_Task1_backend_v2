@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScreenplayApp.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace ScreenplayApp.Core.Models.Requests
 {
     public class ScreenplaysGetRequest
     {
-        public string Category { get; set; } = "Movie";
+        public Category Category { get; set; } = Category.Movie;
         public string Search { get; set; }
         public int OlderThanYears { get; set; }
         public int NewerThanYear { get; set; }
