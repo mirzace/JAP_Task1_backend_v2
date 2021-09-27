@@ -35,6 +35,7 @@ namespace ScreenplayApp.Infrastructure.Data
         {
             base.OnModelCreating(builder);
 
+            // User and Roles
             builder.Entity<AppUser>()
                 .HasMany(ur => ur.UserRoles)
                 .WithOne(u => u.User)
@@ -48,16 +49,29 @@ namespace ScreenplayApp.Infrastructure.Data
                 .IsRequired();
 
             // Screenplays
+            var screenplays = builder.Entity<Screenplay>();
 
-            builder
-                .Entity<Screenplay>()
+            screenplays
                 .Property(e => e.Category)
                 .HasConversion(
                     v => v.ToString(),
                     v => (Category)Enum.Parse(typeof(Category), v));
 
+            // We actually don't need this because the entities follow the naming convection
+            // for the relationships in EF Core
 
+            // Tickets
+            var tickets = builder.Entity<Ticket>();
 
+            tickets.HasOne<Screenplay>()
+                .WithMany(s => s.Tickets)
+                .HasForeignKey(t => t.ScreenplayId);
+
+            tickets.HasOne<Booking>()
+                .WithMany(b => b.Tickets)
+                .HasForeignKey(t => t.BookingId);
+
+            // Reports
             builder.Entity<MostRatedMoviesReport>().HasNoKey();
             builder.Entity<MostSoldMoviesWithoutRatingReport>().HasNoKey();
             builder.Entity<MostViewedMoviesForAPeriodReport>().HasNoKey();
