@@ -14,9 +14,11 @@ namespace ScreenplayApp.Infrastructure.Services
     public class RatingService : IRatingService
     {
         private readonly IRatingRepository _ratingRepository;
-        public RatingService(IRatingRepository ratingRepository)
+        private readonly IScreenplayRepository _screenplayRepository;
+        public RatingService(IRatingRepository ratingRepository, IScreenplayRepository screenplayRepository)
         {
             _ratingRepository = ratingRepository;
+            _screenplayRepository = screenplayRepository;
         }
         public async Task<RatingInsertResponse> RateScreenplay(RatingInsertRequest request)
         {
@@ -25,6 +27,9 @@ namespace ScreenplayApp.Infrastructure.Services
 
             var response = await _ratingRepository.RateScreenplayAsync(request);
             if (response is null) throw new NotFoundException("Screenplay not found!");
+
+            var screenplay = await _screenplayRepository.GetScreenplayAsync(request.ScreenplayId);
+            response.averageRate = screenplay.AverageRate;
 
             return response;
         }

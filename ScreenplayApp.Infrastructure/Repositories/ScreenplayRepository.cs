@@ -29,12 +29,16 @@ namespace ScreenplayApp.Infrastructure.Repositories
 
         public async Task<ScreenplayResponse> GetScreenplayAsync(int id)
         {
-            return _mapper.Map<ScreenplayResponse>(await _context.Screenplays.SingleOrDefaultAsync(x =>x.Id == id));
+            return _mapper.Map<ScreenplayResponse>(await _context.Screenplays.Include(s => s.Ratings)
+                .SingleOrDefaultAsync(x => x.Id == id));
         }
 
         public async Task<PagedList<ScreenplayResponse>> GetScreenplaysAsync(ScreenplaysGetRequest request)
         {
-            var query = _context.Screenplays.AsQueryable();
+            var query = _context.Screenplays
+                .Include(s => s.Ratings)
+                .Include(s => s.Actors)
+                .AsQueryable();
 
             query = query.Where(x => x.Category == request.Category)
                 .OrderByDescending(x => x.Ratings.Average(a => a.Rate));

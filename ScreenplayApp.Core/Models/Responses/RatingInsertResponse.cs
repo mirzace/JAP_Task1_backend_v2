@@ -11,5 +11,6 @@ namespace ScreenplayApp.Core.Models.Responses
         public int Id { get; set; }
         public int Rate { get; set; }
         public int ScreenplayId { get; set; }
+        public double averageRate { get; set; }
     }
 }
