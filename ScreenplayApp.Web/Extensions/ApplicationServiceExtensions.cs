@@ -60,9 +60,7 @@ namespace ScreenplayApp.Web.Extensions
             services.AddTransient<IValidator<LoginAccountRequest>, LoginAccountRequestValidator>();
             services.AddTransient<IValidator<BookingInsertRequest>, BookingInsertRequestValidator>();
             services.AddTransient<IValidator<RatingInsertRequest>, RatingInsertRequestValidator>();
-
             services.AddTransient<IValidator<MostViewedMoviesGetRequest>, MostViewedMoviesGetRequestValidator>();
-
 
             return services;
         }

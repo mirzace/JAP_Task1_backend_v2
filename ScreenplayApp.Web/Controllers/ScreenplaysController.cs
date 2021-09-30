@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Nest;
+using ScreenplayApp.Core.Entities;
 using ScreenplayApp.Core.Models;
 using ScreenplayApp.Core.Models.Requests;
 using ScreenplayApp.Core.Models.Responses;
@@ -16,9 +18,11 @@ namespace ScreenplayApp.Web.Controllers
     public class ScreenplaysController : ControllerBase
     {
         private readonly IScreenplayService _screenplayService;
-        public ScreenplaysController(IScreenplayService screenplayService)
+        private readonly IElasticClient _elasticClient;
+        public ScreenplaysController(IScreenplayService screenplayService, IElasticClient elasticClient)
         {
-        _screenplayService = screenplayService;
+            _screenplayService = screenplayService;
+            _elasticClient = elasticClient;
         }
 
         [HttpGet]
