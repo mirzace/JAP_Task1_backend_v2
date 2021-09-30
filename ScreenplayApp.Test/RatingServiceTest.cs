@@ -26,6 +26,7 @@ namespace ScreenplayApp.Test
     {
         public RatingService _ratingService { get; set; }
         public Mock<RatingRepository> _ratingRepository { get; set; }
+        public Mock<ScreenplayRepository> _screenplayRepository { get; set; }
         
         DataContext _context;
         IMapper _mapper;
@@ -80,7 +81,8 @@ namespace ScreenplayApp.Test
 
             // Mock 
             _ratingRepository = new Mock<RatingRepository>(_context, _mapper);
-            _ratingService = new RatingService(_ratingRepository.Object);
+            _screenplayRepository = new Mock<ScreenplayRepository>(_context, _mapper);
+            _ratingService = new RatingService(_ratingRepository.Object, _screenplayRepository.Object);
         }
 
         [TearDown]

@@ -1,0 +1,33 @@
+﻿C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Data\DataContext.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Data\Seed\Seed.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210921160506_Initial.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210921160506_Initial.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210921163657_add-migation AddedStoredProcedures.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210921163657_add-migation AddedStoredProcedures.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210923125932_AddedEnums.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210923125932_AddedEnums.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210923133726_AddedEnumCast.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210923133726_AddedEnumCast.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927073118_AddedDataAnnotation.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927073118_AddedDataAnnotation.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927073854_UpdatedScreenplayEntity.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927073854_UpdatedScreenplayEntity.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927095015_FluentAPIExample.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927095015_FluentAPIExample.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927095401_RemovedFluenAPI4Tickets.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\20210927095401_RemovedFluenAPI4Tickets.Designer.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Migrations\DataContextModelSnapshot.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Repositories\BookingRepository.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Repositories\RatingRepository.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Repositories\ReportRepository.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Repositories\ScreenplayRepository.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Repositories\TicketRepository.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Services\AccountService.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Services\BookingService.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Services\RatingService.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Services\ReportService.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Services\ScreenplayService.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Services\TicketService.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Services\TokenService.cs
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Data\Seed\ActorSeedData.json
+C:\Users\mirzace\Desktop\Projects\Junior Acceleration Program\JAP_Task1_v2\BackEnd\ScreenplayApp.Infrastructure\Data\Seed\ScreenplaySeedData.json
